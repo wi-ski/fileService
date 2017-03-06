@@ -5,7 +5,7 @@ const model = require('../mongo/model')
 module.exports = (req, res, next) => {
 	const { projectId } = req.query
 	findByProjId(projectId)
-		.then(project => res.json(project))
+		.then(file => res.json(file))
 		.catch(next)
 }
 

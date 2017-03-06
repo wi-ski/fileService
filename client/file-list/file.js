@@ -8,7 +8,9 @@ import SizeCell from './size-cell'
 import TypeCell from './type-cell'
 import LastModifiedCell from './last-modified-cell'
 
-const File = ({ projectId, file, depth }) => (
+const File = ({ projectId, file, depth }) => {
+
+	return (
 	<Row
 		onClick={() => {
 			window.location = `/api/files/${file._id}/content?projectId=${projectId}`
@@ -23,7 +25,7 @@ const File = ({ projectId, file, depth }) => (
 		<LastModifiedCell isoDate={file.dateModified} />
 		<ActionCell />
 	</Row>
-)
+)}
 
 File.propTypes = {
 	projectId: PropTypes.string,

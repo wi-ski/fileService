@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
 		required: true,
 		type: String,
 	},
-	folders: {
+	fNodeId: {
 		type: Schema.Types.ObjectId,
 		ref: 'Fnode',
 	},
