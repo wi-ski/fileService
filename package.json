@@ -20,6 +20,7 @@
     "mongoose": "^4.7.6",
     "multer": "^1.2.1",
     "multer-s3": "^2.5.0",
+    "nvm": "0.0.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "webpack": "^2.2.0-rc.3",

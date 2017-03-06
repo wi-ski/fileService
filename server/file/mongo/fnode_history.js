@@ -1,15 +1,13 @@
-'use strict'
+'usestrict'
 
 const mongoose = require('mongoose')
-const { Schema } = mongoose
 
-
-const schema = new Schema({
+const schema = new mongoose.Schema({
 	dateCreated: {
 		type: Date,
 		default: Date.now,
 	},
-	name: {
+	transactionType: { // Download/upload
 		required: true,
 		type: String,
 	},
@@ -19,4 +17,4 @@ const schema = new Schema({
 	},
 })
 
-module.exports = mongoose.model('Project', schema)
+module.exports = mongoose.model('FNodeHistory', schema)

@@ -4,6 +4,6 @@ const model = require('../mongo/model')
 
 module.exports = data=>{
 	return model
-			.create(data)
-			.call('toObject')
+.create(data)
+.call('toObject')
 }
