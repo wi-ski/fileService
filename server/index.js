@@ -6,6 +6,10 @@ const webpackMiddleware = require('webpack-dev-middleware')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const P = require('bluebird')
+const {
+	fileRouter,
+	folderRouter,
+} = require('./file/file-router')
 
 // Have mongoose use bluebird as it's promise library per: http://mongoosejs.com/docs/promises.html
 mongoose.Promise = P
@@ -26,9 +30,11 @@ app.use(webpackMiddleware(
 // Set up static files
 app.use(express.static('public'))
 
+
 // Routes for primary API
 app.use('/api/projects', require('./project/router'))
-app.use('/api/files', require('./file/file-router'))
+app.use('/api/files', fileRouter)
+app.use('/api/folders', folderRouter)
 
 mongoose
 	.connect('mongodb://localhost:27019/backend-challenge')

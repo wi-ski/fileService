@@ -1,6 +1,7 @@
 'use strict'
 
-const router = require('express').Router()  // eslint-disable-line new-cap
+const fileRouter = require('express').Router()  // eslint-disable-line new-cap
+const folderRouter = require('express').Router()  // eslint-disable-line new-cap
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const s3 = require('../lib/s3')
@@ -19,7 +20,12 @@ const uploader = multer({
 // This should upload the file, however, you'll still need to add another function after this
 // uploader middleware to actually save a record of this file in Mongo
 
-router.post('/', uploader.single('file'), require('./handler/set-project-file-assoc.js'))
-router.get('/', require('./handler/find-by-project-id.js'))
-module.exports = router
+fileRouter.post('/', uploader.single('file'), require('./handler/set-project-file-assoc.js'))
+fileRouter.get('/', require('./handler/find-by-project-id.js'))
+fileRouter.get('/download-all', require('./handler/download-all.js'))
 
+
+folderRouter.post('/', require('./handler/create-folder.js'))
+folderRouter.get('/:parentId/items', require('./handler/get-folder-contents.js'))
+
+module.exports = { fileRouter, folderRouter }

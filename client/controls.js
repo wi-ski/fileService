@@ -25,7 +25,7 @@ const Controls = ({ upload, addFolder, selectedProjectId }) => {
 				type="outline"
 				color="#888"
 				onClick={() => {
-					window.location = '/api/files/download-all'
+					window.location = `/api/files/download-all?projectId=${selectedProjectId}`
 				}}
 			>
 				Download all

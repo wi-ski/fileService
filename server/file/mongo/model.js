@@ -22,9 +22,8 @@ const schema = new mongoose.Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Project',
 	},
-	parent: { type: String, ref: 'DataType' },
+	parentId: { type: String, ref: 'Fnode' },
 })
-
 
 schema.pre('save', function(next) {
 	const now = new Date()
@@ -45,6 +44,7 @@ schema.post('update', function(doc) {
 	})
 	.catch(e => {throw e})
 })
+
 schema.post('remove', function(doc) {
 	fileHistory.create({
 		type: 'remove',
