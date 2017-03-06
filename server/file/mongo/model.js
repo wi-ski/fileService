@@ -1,23 +1,20 @@
 'use strict'
 
 const mongoose = require('mongoose')
-
+const { Schema } = mongoose
 const schema = new mongoose.Schema({
 	dateCreated: {
 		type: Date,
 		default: Date.now,
 	},
-	s3Key: {
-		required: true,
+	type: {
+		require: true,
 		type: String,
 	},
-	meta: {
-		fileType: String,
-		fileSize: Number,
-	},
-	name: {
-		required: true,
-		type: String,
+	meta: Schema.Types.Mixed,
+	projectId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Project',
 	},
 	parent: { type: String, ref: 'DataType' },
 })

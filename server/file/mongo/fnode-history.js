@@ -1,7 +1,7 @@
 'usestrict'
 
 const mongoose = require('mongoose')
-
+const { Schema } = mongoose
 const schema = new mongoose.Schema({
 	dateCreated: {
 		type: Date,

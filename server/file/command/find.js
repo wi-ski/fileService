@@ -2,8 +2,9 @@
 
 const model = require('../mongo/model')
 
-module.exports = data=>{
+module.exports = query => {
 	return model
-.create(data)
-.call('toObject')
+		.find(query)
+		.lean()
+		.exec()
 }

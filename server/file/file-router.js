@@ -18,19 +18,8 @@ const uploader = multer({
 
 // This should upload the file, however, you'll still need to add another function after this
 // uploader middleware to actually save a record of this file in Mongo
-router.post('/', (request, response)=>{
-// router.post('/', uploader.single('file'))
 
-})
-
-
-router.get('/', (request, response)=>{
-	const { projectId } = request.query
-
-// router.post('/', uploader.single('file'))
-
-})
-
-
-
+router.post('/', uploader.single('file'), require('./handler/set-project-file-assoc.js'))
+router.get('/', require('./handler/find-by-project-id.js'))
 module.exports = router
+
