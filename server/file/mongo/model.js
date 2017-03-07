@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 const schema = new mongoose.Schema({
 	name: String,
-	size: Number,
+	size: { type: Number, default: 0 },
 	dateCreated: {
 		type: Date,
 		default: Date.now,
@@ -34,16 +34,16 @@ schema.pre('save', function(next) {
 	next()
 })
 
-schema.post('update', function(doc) {
-	fileHistory.create({
-		type: 'update',
-		fNodeId: doc._id,
-	})
-	.then(histObj => {
-		return doc.update({ dateModified: histObj._id })
-	})
-	.catch(e => {throw e})
-})
+// schema.post('update', function(doc) {
+// 	fileHistory.create({
+// 		type: 'update',
+// 		fNodeId: doc._id,
+// 	})
+// 	.then(histObj => {
+// 		return doc.update({ dateModified: Date.now })
+// 	})
+// 	.catch(e => {throw e})
+// })
 
 schema.post('remove', function(doc) {
 	fileHistory.create({
