@@ -23,7 +23,7 @@ const uploader = multer({
 fileRouter.post('/', uploader.single('file'), require('./handler/set-project-file-assoc.js'))
 fileRouter.get('/', require('./handler/find-by-project-id.js'))
 fileRouter.get('/download-all', require('./handler/download-all.js'))
-
+fileRouter.get('/:fileId/content', require('./handler/download.js'))
 
 folderRouter.post('/', require('./handler/create-folder.js'))
 folderRouter.get('/:parentId/items', require('./handler/get-folder-contents.js'))
